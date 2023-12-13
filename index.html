@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assigment18A</title>
+    <style>
+        *{
+            margin: 0 auto;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            display: flex;
+            align-items: center;
+        }
+        div{
+            padding: 20px;
+            background-color: wheat;
+        }
+        img{
+            width: 300px;
+            margin: 0 auto;
+            padding-bottom: 30px;
+        }
+        h1 {
+            text-align: start;
+        }
+        h2 {
+            display: block;
+            text-align: end;
+            color: orange;
+        }
+        p{
+            margin-top: 30px;
+            color: grey;
+        }
+    </style>
+</head>
+<body>
+    <script>
+      fetch("https://randomuser.me/api/")
+      .then(res => res.json())
+  .then(data => {
+    div = document.createElement("div")
+    img = document.createElement("img")
+    img.src = data.results[0].picture.large
+    const body = document.body
+    body.appendChild(div)
+    div.appendChild(img)    
+    const fullname = document.createElement("h1")
+    fullname.innerText = `${data.results[0].name.first} ${data.results[0].name.last}`
+    div.appendChild(fullname)
+    const age = document.createElement("h2")
+    age.innerText = `${data.results[0].dob.age} years old`
+    div.appendChild(age)
+    const email = document.createElement("p")
+    email.innerText = data.results[0].email
+    div.appendChild(email)
+
+  })
+  .catch(e => console.log(e.message))
+      
+/*
+1. Jums paskambino pažinčių portalas – jiems reikia staigiai sukurti front-endą, kuris pasiimtų duomenis iš https://randomuser.me/api/ ir juos atvaizduotų panašioje kortelėje kaip čia (dizainas neturi atitikti, bet padarykit tvarkingai - jį galite pilnai su HTML pasirašyti, bet norintiems sudėtingiau - pabandykite su JS sukurti html elementus).*/
+    </script>
+</body>
+</html>
